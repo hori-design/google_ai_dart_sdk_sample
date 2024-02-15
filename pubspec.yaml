@@ -1,0 +1,19 @@
+name: google_ai_dart_sdk_sample
+description: "google_ai_dart_sdk_sample"
+publish_to: 'none'
+
+version: 1.0.0+1
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  cupertino_icons: ^1.0.6
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.20.5
+
+dev_dependencies:
+  pedantic_mono: ^1.25.0
+
+flutter:
+  uses-material-design: true
