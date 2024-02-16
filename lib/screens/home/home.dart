@@ -30,9 +30,17 @@ class HomeScreen extends HookWidget {
       addMessage(user, text.text);
 
       final content = Content.text(text.text);
-      final response = await chat.value?.sendMessage(content);
-
-      addMessage(ai, response?.text ?? '取得できませんでした');
+      try {
+        final response = await chat.value?.sendMessage(content);
+        final message = response?.text ?? 'エラーが発生しました';
+        addMessage(ai, message);
+      } on Exception catch (err) {
+        final isOverloaded = err.toString().contains('overloaded');
+        final message = isOverloaded
+          ? '混雑しています。しばらくしてからもう一度お試しください。'
+          : 'エラーが発生しました';
+        addMessage(ai, message);
+      }
     }
 
     useEffect(() {
